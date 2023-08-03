@@ -418,4 +418,11 @@ function p.interpepter(code)
     return 0, {traceback=traceback}
 end
 
+function p.fromfile(path)
+    local f = io.open(path, "r")
+    if not f then error("File " .. path .. " not found.") end
+    local code = f:read("*a")
+    return p.interpepter(code)
+end
+
 return p
